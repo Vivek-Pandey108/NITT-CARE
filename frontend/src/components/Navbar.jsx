@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { assets } from '../assets/assets'
+import { assets} from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 
@@ -18,7 +18,8 @@ const Navbar = () => {
 
   return (
     <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-[#ADADAD]'>
-      <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="" />
+      <img onClick={() => navigate('/')} className="w-12 h-11 object-contain cursor-pointer"  src={assets.logo} alt="Hello" />
+      {/* <img src="../assets/doc4.png" alt="" /> */}
       <ul className='md:flex items-start gap-5 font-medium hidden'>
         <NavLink to='/' >
           <li className='py-1'>HOME</li>

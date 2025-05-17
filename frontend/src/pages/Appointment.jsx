@@ -5,7 +5,7 @@ import { assets } from '../assets/assets'
 import RelatedDoctors from '../components/RelatedDoctors'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-
+// ndoe-cron package to schedule auto cancel booked appointment
 const Appointment = () => {
 
     const { docId } = useParams()
