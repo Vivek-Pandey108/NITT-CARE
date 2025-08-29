@@ -25,7 +25,7 @@ const TopDoctors = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className='bg-[#EAEFFF] text-gray-600 px-12 py-3 rounded-full mt-10'>more</button>
+            <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light hidden md:block">more</button>
         </div>
 
     )

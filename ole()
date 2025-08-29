@@ -1,0 +1,116 @@
+warning: in the working copy of 'admin/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'admin/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'admin/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'admin/src/assets/assets.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'admin/src/components/Navbar.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/controllers/adminController.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/controllers/userController.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/routes/userRoute.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/assets/assets.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/components/Footer.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/components/Header.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/components/Navbar.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/context/AppContext.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/About.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/Appointment.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/Contact.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/Home.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/Login.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/MyAppointments.jsx', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/admin/index.html b/admin/index.html[m
+[1mindex d21da4b..f98c67d 100644[m
+[1m--- a/admin/index.html[m
+[1m+++ b/admin/index.html[m
+[36m@@ -2,9 +2,9 @@[m
+ <html lang="en">[m
+   <head>[m
+     <meta charset="UTF-8" />[m
+[31m-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />[m
+[32m+[m[32m    <link rel="icon" type="image/svg+xml" href="/favicon.png" />[m
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />[m
+[31m-    <title>Prescripto Panel</title>[m
+[32m+[m[32m    <title>NITT-CARE</title>[m
+   </head>[m
+   <body>[m
+     <div id="root"></div>[m
+[1mdiff --git a/admin/package-lock.json b/admin/package-lock.json[m
+[1mindex 4a31e15..dafe242 100644[m
+[1m--- a/admin/package-lock.json[m
+[1m+++ b/admin/package-lock.json[m
+[36m@@ -7,6 +7,7 @@[m
+     "": {[m
+       "name": "admin",[m
+       "version": "0.0.0",[m
+[32m+[m[32m      "license": "ISC",[m
+       "dependencies": {[m
+         "axios": "^1.7.2",[m
+         "react": "^18.3.1",[m
+[1mdiff --git a/admin/package.json b/admin/package.json[m
+[1mindex fa6827f..a26a295 100644[m
+[1m--- a/admin/package.json[m
+[1m+++ b/admin/package.json[m
+[36m@@ -28,5 +28,9 @@[m
+     "postcss": "^8.4.40",[m
+     "tailwindcss": "^3.4.7",[m
+     "vite": "^5.3.4"[m
+[31m-  }[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",[m
+[32m+[m[32m  "main": "postcss.config.js",[m
+[32m+[m[32m  "author": "",[m
+[32m+[m[32m  "license": "ISC"[m
+ }[m
+[1mdiff --git a/admin/public/favicon.svg b/admin/public/favicon.svg[m
+[1mdeleted file mode 100644[m
+[1mindex ae04356..0000000[m
+[1m--- a/admin/public/favicon.svg[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">[m
+[31m-<path d="M22.9997 0C35.7026 0 45.9997 10.2971 45.9997 23V39.1C45.9997 40.93 45.2728 42.685 43.9788 43.979C42.6848 45.273 40.9297 46 39.0997 46H24.1497V35.9099C24.1497 33.6076 24.29 31.2225 25.4975 29.2629C26.362 27.8586 27.5185 26.6566 28.8884 25.7385C30.2583 24.8204 31.8096 24.2077 33.4371 23.9418L33.8776 23.8705C34.0592 23.8085 34.2168 23.6912 34.3284 23.5351C34.44 23.379 34.5 23.1919 34.5 23C34.5 22.8081 34.44 22.621 34.3284 22.4649C34.2168 22.3088 34.0592 22.1915 33.8776 22.1294L33.4371 22.0581C31.0591 21.6697 28.8632 20.5441 27.1594 18.8403C25.4556 17.1365 24.3301 14.9406 23.9416 12.5626L23.8703 12.1222C23.8082 11.9406 23.6909 11.7829 23.5348 11.6713C23.3787 11.5597 23.1916 11.4997 22.9997 11.4997C22.8078 11.4997 22.6208 11.5597 22.4647 11.6713C22.3086 11.7829 22.1913 11.9406 22.1292 12.1222L22.0579 12.5626C21.7922 14.1902 21.1795 15.7415 20.2614 17.1114C19.3433 18.4814 18.1412 19.6378 16.7368 20.5022C14.7772 21.7097 12.3921 21.85 10.0898 21.85H0.0273438C0.628794 9.68185 10.6832 0 22.9997 0Z" fill="#5F6FFF"/>[m
+[31m-<path d="M0 24.15H10.0901C12.3924 24.15 14.7775 24.2903 16.7371 25.4978C18.2689 26.4417 19.5583 27.7311 20.5022 29.2629C21.7097 31.2225 21.85 33.6076 21.85 35.9099V46H6.9C5.07001 46 3.31496 45.273 2.02096 43.979C0.726962 42.685 0 40.93 0 39.1L0 24.15ZM46 2.3C46 2.91 45.7577 3.49501 45.3263 3.92635C44.895 4.35768 44.31 4.6 43.7 4.6C43.09 4.6 42.505 4.35768 42.0737 3.92635C41.6423 3.49501 41.4 2.91 41.4 2.3C41.4 1.69 41.6423 1.10499 42.0737 0.673654C42.505 0.242321 43.09 0 43.7 0C44.31 0 44.895 0.242321 45.3263 0.673654C45.7577 1.10499 46 1.69 46 2.3Z" fill="#5F6FFF"/>[m
+[31m-</svg>[m
+[1mdiff --git a/admin/src/assets/assets.js b/admin/src/assets/assets.js[m
+[1mindex 13f69c1..8176ea5 100644[m
+[1m--- a/admin/src/assets/assets.js[m
+[1m+++ b/admin/src/assets/assets.js[m
+[36m@@ -11,6 +11,7 @@[m [mimport tick_icon from './tick_icon.svg'[m
+ import appointments_icon from './appointments_icon.svg'[m
+ import earning_icon from './earning_icon.svg'[m
+ import patients_icon from './patients_icon.svg'[m
+[32m+[m[32mimport logo from './image.png'[m
+ [m
+ export const assets = {[m
+     add_icon,[m
+[36m@@ -25,5 +26,6 @@[m [mexport const assets = {[m
+     list_icon,[m
+     tick_icon,[m
+     appointments_icon,[m
+[31m-    earning_icon[m
+[32m+[m[32m    earning_icon,[m
+[32m+[m[32m    logo[m
+ }[m
+[1mdiff --git a/admin/src/components/Navbar.jsx b/admin/src/components/Navbar.jsx[m
+[1mindex 4614d0f..637fdd5 100644[m
+[1m--- a/admin/src/components/Navbar.jsx[m
+[1m+++ b/admin/src/components/Navbar.jsx[m
+[36m@@ -1,33 +1,45 @@[m
+[31m-import React, { useContext } from 'react'[m
+[31m-import { assets } from '../assets/assets'[m
+[31m-import { DoctorContext } from '../context/DoctorContext'[m
+[31m-import { AdminContext } from '../context/AdminContext'[m
+[31m-import { useNavigate } from 'react-router-dom'[m
+[32m+[m[32mimport React, { useContext } from "react";[m
+[32m+[m[32mimport { assets } from "../assets/assets";[m
+[32m+[m[32mimport { DoctorContext } from "../context/DoctorContext";[m
+[32m+[m[32mimport { AdminContext } from "../context/AdminContext";[m
+[32m+[m[32mimport { useNavigate } from "react-router-dom";[m
+ [m
+ const Navbar = () => {[m
+[32m+[m[32m  const { dToken, setDToken } = useContext(DoctorContext);[m
+[32m+[

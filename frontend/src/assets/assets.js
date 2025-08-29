@@ -5,7 +5,10 @@ import profile_pic from './profile_pic.png'
 import contact_image from './contact_image.png'
 import about_image from './about_image.png'
 import logo from './image.png'
-import hospital_img from './hospital_img.png'
+import hospital_img1 from './hospital_img1.png'
+import hospital_img2 from './hospital_img2.jpg'
+import hospital_img3 from './hospital_img3.jpeg'
+import hospital_img4 from './hospital_img4.jpg'
 import dropdown_icon from './dropdown_icon.svg'
 import menu_icon from './menu_icon.svg'
 import cross_icon from './cross_icon.png'
@@ -57,7 +60,10 @@ export const assets = {
     upload_icon,
     stripe_logo,
     razorpay_logo,
-    hospital_img
+    hospital_img1,
+    hospital_img2,
+    hospital_img3,
+    hospital_img4,
 }
 
 export const specialityData = [
