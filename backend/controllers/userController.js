@@ -7,6 +7,7 @@ import appointmentModel from "../models/appointmentModel.js";
 import { v2 as cloudinary } from 'cloudinary'
 import stripe from "stripe";
 import razorpay from 'razorpay';
+import mongoose from "mongoose";
 
 // Gateway Initialize
 // const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
@@ -131,61 +132,151 @@ const updateProfile = async (req, res) => {
 }
 
 // API to book appointment 
+// const bookAppointment = async (req, res) => {
+
+//     try {
+
+//         const { userId, docId, slotDate, slotTime } = req.body
+//         const docData = await doctorModel.findById(docId).select("-password")
+
+//         if (!docData.available) {
+//             return res.json({ success: false, message: 'Doctor Not Available' })
+//         }
+
+//         let slots_booked = docData.slots_booked
+
+//         // checking for slot availablity 
+//         if (slots_booked[slotDate]) {
+//             if (slots_booked[slotDate].includes(slotTime)) {
+//                 return res.json({ success: false, message: 'Slot Not Available' })
+//             }
+//             else {
+//                 slots_booked[slotDate].push(slotTime)
+//             }
+//         } else {
+//             slots_booked[slotDate] = []
+//             slots_booked[slotDate].push(slotTime)
+//         }
+
+//         const userData = await userModel.findById(userId).select("-password")
+
+//         delete docData.slots_booked
+
+//         const appointmentData = {
+//             userId,
+//             docId,
+//             userData,
+//             docData,
+//             amount: docData.fees,
+//             slotTime,
+//             slotDate,
+//             date: Date.now()
+//         }
+
+//         const newAppointment = new appointmentModel(appointmentData)
+//         await newAppointment.save()
+
+//         // save new slots data in docData
+//         await doctorModel.findByIdAndUpdate(docId, { slots_booked })
+
+//         res.json({ success: true, message: 'Appointment Booked' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.json({ success: false, message: error.message })
+//     }
+
+// }
+
 const bookAppointment = async (req, res) => {
-
+    // Start a database session for transaction
+    const session = await mongoose.startSession();
+    
     try {
+        await session.withTransaction(async () => {
+            const { userId, docId, slotDate, slotTime } = req.body;
+            
+            // Find doctor with current version
+            const docData = await doctorModel.findById(docId)
+                .select("-password")
+                .session(session);
 
-        const { userId, docId, slotDate, slotTime } = req.body
-        const docData = await doctorModel.findById(docId).select("-password")
-
-        if (!docData.available) {
-            return res.json({ success: false, message: 'Doctor Not Available' })
-        }
-
-        let slots_booked = docData.slots_booked
-
-        // checking for slot availablity 
-        if (slots_booked[slotDate]) {
-            if (slots_booked[slotDate].includes(slotTime)) {
-                return res.json({ success: false, message: 'Slot Not Available' })
+            if (!docData.available) {
+                throw new Error('Doctor Not Available');
             }
-            else {
-                slots_booked[slotDate].push(slotTime)
+
+            let slots_booked = { ...docData.slots_booked };
+
+            // Check slot availability
+            if (slots_booked[slotDate]?.includes(slotTime)) {
+                throw new Error('Slot Not Available');
             }
-        } else {
-            slots_booked[slotDate] = []
-            slots_booked[slotDate].push(slotTime)
-        }
 
-        const userData = await userModel.findById(userId).select("-password")
+            // Add the slot
+            if (slots_booked[slotDate]) {
+                slots_booked[slotDate].push(slotTime);
+            } else {
+                slots_booked[slotDate] = [slotTime];
+            }
 
-        delete docData.slots_booked
+            // Atomic update with version check
+            const updateResult = await doctorModel.findOneAndUpdate(
+                { 
+                    _id: docId, 
+                    __v: docData.__v  // Version check for optimistic locking
+                },
+                { 
+                    slots_booked,
+                    $inc: { __v: 1 }  // Increment version
+                },
+                { 
+                    session,
+                    new: true 
+                }
+            );
 
-        const appointmentData = {
-            userId,
-            docId,
-            userData,
-            docData,
-            amount: docData.fees,
-            slotTime,
-            slotDate,
-            date: Date.now()
-        }
+            // If update failed, slot was booked by another request
+            if (!updateResult) {
+                throw new Error('Slot was just booked by another user');
+            }
 
-        const newAppointment = new appointmentModel(appointmentData)
-        await newAppointment.save()
+            // Get user data
+            const userData = await userModel.findById(userId)
+                .select("-password")
+                .session(session);
 
-        // save new slots data in docData
-        await doctorModel.findByIdAndUpdate(docId, { slots_booked })
+            // Create appointment
+            const appointmentData = {
+                userId,
+                docId,
+                userData,
+                docData: { ...docData._doc, slots_booked: undefined },
+                amount: docData.fees,
+                slotTime,
+                slotDate,
+                date: Date.now()
+            };
 
-        res.json({ success: true, message: 'Appointment Booked' })
+            const newAppointment = new appointmentModel(appointmentData);
+            await newAppointment.save({ session });
+        });
+
+        res.json({ success: true, message: 'Appointment Booked' });
 
     } catch (error) {
-        console.log(error)
-        res.json({ success: false, message: error.message })
+        console.log(error);
+        
+        if (error.message === 'Slot was just booked by another user' || 
+            error.message === 'Slot Not Available') {
+            res.json({ success: false, message: 'Sorry, this slot was just booked by another user. Please select a different time.' });
+        } else {
+            res.json({ success: false, message: error.message });
+        }
+    } finally {
+        await session.endSession();
     }
+};
 
-}
 
 // API to cancel appointment
 const cancelAppointment = async (req, res) => {
