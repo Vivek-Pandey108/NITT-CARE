@@ -73,7 +73,7 @@ const Navbar = () => {
           </div>
         ) : (
           <NavLink to="/login">
-            <button className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light hidden md:block">
+            <button className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light">
               Create account
             </button>
           </NavLink>
