@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between text-sm py-8 mb-5 border-b border-b-[#ADADAD]">
+    <div className="flex items-center justify-between text-sm py-1 mb-5 border-b border-b-[#ADADAD]">
       <img
         onClick={() => navigate("/")}
         className="w-20 h-22 object-contain cursor-pointer"
@@ -72,8 +72,14 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
+          // <NavLink to="/login">
+          //   <button className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light">
+          //     Create account
+          //   </button>
+          
+          // </NavLink>
           <NavLink to="/login">
-            <button className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light">
+            <button className="bg-gradient-to-br from-[#1479C9] to-[#33CC80] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg transition-all duration-200 hover:from-[#1167b1] hover:to-[#1e9449]">
               Create account
             </button>
           </NavLink>
