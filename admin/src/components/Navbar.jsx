@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
       <button
         onClick={() => logout()}
-        className="bg-primary text-white text-sm px-10 py-2 rounded-full"
+        className="bg-gradient-to-br from-[#1479C9] to-[#33CC80] text-white px-2 py-1 rounded-2xl font-semibold shadow-lg transition-all duration-200 hover:from-[#1167b1] hover:to-[#1e9449]"
       >
         Logout
       </button>

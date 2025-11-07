@@ -85,8 +85,6 @@ const Header = () => {
             </h1>
           </div>
 
-          
-
           {/* CTA Button */}
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             <a
@@ -143,8 +141,6 @@ const Header = () => {
 
         {/* --------- Header Right - Image Carousel --------- */}
         <div className="md:w-1/2 flex justify-center md:justify-end items-center relative mt-8 md:mt-0">
-          
-
           {/* Image Carousel Container */}
           <div className="relative">
             {/* Main Image with Transition */}

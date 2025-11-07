@@ -57,9 +57,7 @@ const Login = () => {
     <form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center">
       <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-sm shadow-lg">
         <p className="text-2xl font-semibold">
-          {state === "Sign Up" ? <span >Create <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"> Account</span> </span> : <span>Log 
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">In</span>
-          </span> 
+          {state === "Sign Up" ? <span >Create Account </span> : <span>LogIn</span> 
           }
         </p>
         <p>
@@ -101,7 +99,7 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white w-full py-2 rounded-md text-base"
+          className="bg-gradient-to-br from-[#1479C9] to-[#33CC80] text-white w-full py-2 rounded-md text-base hover:from-[#1167b1] hover:to-[#1e9449]"
         >
           {state === "Sign Up" ? "Create Account" : "Login"}
         </button>
