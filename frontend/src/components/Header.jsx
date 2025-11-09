@@ -62,8 +62,12 @@ const Header = () => {
   return (
     <div className="bg-gradient-to-br from-[#1479C9] to-[#33CC80]">
       {/* Background Pattern/Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent"></div> */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div> */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent z-0 pointer-events-none"></div> */}
+      {/* Background Pattern/Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent z-0 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent z-0 pointer-events-none"></div>
 
       <div className="relative flex flex-col md:flex-row items-center min-h-[600px] px-6 md:px-10 lg:px-20">
         {/* --------- Header Left --------- */}

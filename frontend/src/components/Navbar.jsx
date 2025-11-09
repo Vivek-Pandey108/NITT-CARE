@@ -72,18 +72,12 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          // <NavLink to="/login">
-          //   <button className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white px-8 py-4 rounded-2xl font-light">
-          //     Create account
-          //   </button>
-          
-          // </NavLink>
-          <NavLink to="/login">
-            <button className="bg-gradient-to-br from-[#1479C9] to-[#33CC80] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg transition-all duration-200 hover:from-[#1167b1] hover:to-[#1e9449]">
-              Create account
-            </button>
-          </NavLink>
-        )}
+              <NavLink to="/login">
+                <button className="bg-gradient-to-br from-[#1479C9] to-[#33CC80] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg transition-all duration-200 hover:from-[#1167b1] hover:to-[#1e9449]">
+                  Create account
+                </button>
+              </NavLink>
+            )}
         <img
           onClick={() => setShowMenu(true)}
           className="w-7 md:hidden"
